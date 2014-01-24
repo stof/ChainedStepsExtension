@@ -10,6 +10,7 @@
 
 namespace Behat\ChainedStepsExtension;
 
+use Behat\Behat\Tester\ServiceContainer\TesterExtension;
 use Behat\Testwork\ServiceContainer\Extension as ExtensionInterface;
 use Behat\Testwork\ServiceContainer\ExtensionManager;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -44,7 +45,7 @@ class Extension implements ExtensionInterface
      */
     public function load(ContainerBuilder $container, array $config)
     {
-        // TODO: Implement load() method.
+        $container->getDefinition(TesterExtension::STEP_TESTER_ID)->setClass('Behat\ChainedStepsExtension\Tester\ChainedStepsTester');
     }
 
     /**
